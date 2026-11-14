@@ -35,7 +35,7 @@
       </dl>
       <h3>المنتجات والكميات المطلوبة</h3>
       <div class="tracked-item" *ngFor="let item of result.items">
-        <div><strong>{{ item.name }}</strong><small *ngIf="item.sku">رمز المنتج: {{ item.sku }}</small><small *ngIf="item.categories?.length">{{ item.categories.join('، ') }}</small><small *ngIf="optionSummary(item.selectedOptions)">{{ optionSummary(item.selectedOptions) }}</small></div>
+        <div><strong>{{ item.name }}</strong><small *ngIf="item.sku">رمز المنتج: {{ item.sku }}</small><small *ngIf="optionSummary(item.selectedOptions)">{{ optionSummary(item.selectedOptions) }}</small></div>
         <b>العدد = {{ item.quantity }}</b>
       </div>
       <p class="tracking-note">الأسعار والتوفر ومواعيد التسليم يحددها فريق التوريد بعد مراجعة الطلب، وسيتواصل معك لمتابعته.</p>
