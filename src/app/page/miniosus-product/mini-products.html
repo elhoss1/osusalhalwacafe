@@ -1,0 +1,117 @@
+<main class="products-page" dir="rtl">
+  <section class="hero-section">
+    <div class="hero-content container">
+      <p class="eyebrow">☕ أسس الحلوى كافيه | شريككم في تقديم مذاق استثنائي 🍫🍪</p>
+      <h1>حلويات مختارة تثري قائمة كوفيك.</h1>
+      <p class="hero-copy">نوفر تشكيلة مختارة من الكيك والتشيز كيك والكروسان والحلويات المتنوعة، لتلبية احتياجات الكوفيهات والمنشآت التجارية، مع حلول توريد مرنة وعروض أسعار تناسب الأصناف والكميات المطلوبة.</p>
+      <div class="hero-actions">
+        <!-- <a class="button button-light" href="#catalog">تصفح المنتجات</a>
+        <a class="button button-gold" routerLink="/cart">اطلب عرض سعر</a> -->
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog-section" id="catalog">
+    <div class="container">
+      <div class="section-heading catalog-heading">
+        <p class="eyebrow">كتالوج منتجاتنا</p>
+        <h2>اكتشف تشكيلتنا المميزة من الحلويات</h2>
+        <p>تصفح منتجاتنا، واختر الأصناف والكميات المناسبة لكوفيك، وأضفها إلى طلب عرض سعر موحد.</p>
+      </div>
+      <nav class="category-tabs" aria-label="تصنيفات المنتجات">
+        <button *ngFor="let category of categories" type="button" class="category-tab"
+          [class.active]="selectedCategory === category.id" [attr.aria-pressed]="selectedCategory === category.id"
+          (click)="selectCategory(category.id)">
+          {{ category.label }}
+        </button>
+      </nav>
+      <div class="products-container">
+        <div class="products-grid" *ngIf="!loading && filteredProducts.length > 0">
+          <app-product-mini *ngFor="let product of filteredProducts" [product]="product"></app-product-mini>
+        </div>
+        <div class="loading" *ngIf="loading" role="status" aria-live="polite"><p>جاري تحميل المنتجات...</p></div>
+        <div class="no-products" *ngIf="!loading && filteredProducts.length === 0">
+          <p>{{ products.length ? 'لا توجد منتجات معروضة في هذا التصنيف حالياً' : 'لا توجد منتجات متاحة حالياً' }}</p>
+          <p>يمكنك التواصل مع قسم التوريد للاستفسار عن الأصناف.</p>
+        </div>
+        <p class="catalog-note">تُحدد الأسعار والكميات المتاحة ومواعيد التسليم بعد مراجعة طلب عرض السعر.</p>
+        <a class="button button-dark" routerLink="/cart">اختر منتجاتك واطلب عرض السعر</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro-section container" id="about">
+    <div class="section-heading">
+      <p class="eyebrow">شريكك في نجاح كوفيك</p>
+      <h2>أسس الحلوى كافيه... شريكك في توريد الحلويات والمخبوزات.</h2>
+      <p>في أسس الحلوى كافيه، نقدم تشكيلة مختارة من الحلويات والمخبوزات للكوفيهات والمنشآت التجارية، مع خيارات متنوعة من الأصناف والأحجام، وحلول توريد مرنة تلبي احتياجات شركائنا، ونسعى لبناء علاقات تجارية طويلة الأمد تقوم على الجودة والاحترافية ووضوح التعامل.</p>
+      <p><strong>رؤيتنا:</strong>أن نكون الشريك المفضل للكوفيهات في توفير الحلويات والمخبوزات المميزة.</p>
+      <p><strong>رسالتنا:</strong>تقديم تشكيلة متنوعة من المنتجات وحلول توريد مرنة تسهم في تطوير قوائم الكوفيهات وتعزيز تجربة عملائها.</p>
+    </div>
+    <section class="manufacturer-info" aria-labelledby="manufacturer-title">
+      <h3 id="manufacturer-title">بيانات المصنع والتراخيص</h3>
+      <dl>
+        <div><dt>المصنع</dt><dd>مصنع نضيد الوشم</dd></div>
+        <div><dt>الرقم الوطني الموحد</dt><dd dir="ltr">77003239824</dd></div>
+        <div><dt>رقم الترخيص الصناعي</dt><dd dir="ltr">1431100190585</dd></div>
+        <div><dt>رقم ترخيص هيئة الغذاء والدواء</dt><dd dir="ltr">ML-2025-FO-0109</dd></div>
+      </dl>
+    </section>
+    <div class="benefit-grid">
+      <article class="benefit-card"><span class="benefit-icon" aria-hidden="true">✦</span><h3>تشكيلة متنوعة من الحلويات</h3><p>تشكيلة متنوعة من الحلويات والمخبوزات، تناسب مختلف الأذواق وتساعد على تنويع قائمة كوفيك.</p></article>
+      <article class="benefit-card"><span class="benefit-icon" aria-hidden="true">◈</span><h3>أحجام متنوعة تناسب كوفيك</h3><p>خيارات متعددة من الأحجام تناسب التقديم الفردي والعرض داخل الكوفيهات.</p></article>
+      <article class="benefit-card"><span class="benefit-icon" aria-hidden="true">٪</span><h3>عروض أسعار مخصصة</h3><p>وفق الأصناف والكميات المطلوبة، بما يتناسب مع احتياجات كل منشأة.</p></article>
+      <article class="benefit-card"><span class="benefit-icon" aria-hidden="true">↻</span><h3>حلول توريد مرنة</h3><p>إمكانية تنسيق طلبات التوريد الدورية ومواعيد التسليم وفق احتياجات نشاطك والاتفاق المسبق.</p></article>
+    </div>
+  </section>
+
+  <section class="supply-section container" id="supply">
+    <div class="section-heading">
+      <p class="eyebrow">خدمات التوريد</p>
+      <h2>توريد الحلويات لكوفيك بخطوات سهلة</h2>
+    </div>
+    <div class="service-list">
+      <article><h3>توريد المنتجات</h3><p>اختيار الأصناف والأحجام والكميات الملائمة لنشاط الكوفي.</p></article>
+      <article><h3>طلبات التوريد الدورية</h3><p>إمكانية مناقشة جدول توريد متكرر وفق الاحتياج والاتفاق.</p></article>
+      <article><h3>عروض أسعار مخصصة</h3><p>تُراجع الأصناف والكميات وموقع المنشأة ومتطلبات التسليم لإعداد العرض.</p></article>
+      <article><h3>متابعة الطلب</h3><p>تنسيق تفاصيل الطلب والتجهيز والتسليم بعد اعتماد العرض.</p></article>
+    </div>
+    <div class="steps-grid">
+      <article><span class="step-icon" aria-hidden="true">⌕</span><span>1</span><h3>تصفح المنتجات</h3><p>اختر الحلويات والمخبوزات المناسبة لقائمة كوفيك.</p></article>
+      <article><span class="step-icon" aria-hidden="true">＋</span><span>2</span><h3>حدد الأصناف والكميات</h3><p>أضف المنتجات والكميات المطلوبة إلى طلب عرض السعر.</p></article>
+      <article><span class="step-icon" aria-hidden="true">↗</span><span>3</span><h3>أرسل طلب عرض السعر</h3><p>أدخل بيانات منشأتك ووسائل التواصل.</p></article>
+      <article><span class="step-icon" aria-hidden="true">✓</span><span>4</span><h3>استلم العرض</h3><p>يتواصل معك فريق التوريد لمناقشة الأسعار والتوفر ومواعيد التسليم.</p></article>
+    </div>
+    <div class="supply-callout"><div><h3>توريد يناسب احتياج منشأتك</h3><p>طلبات أصناف مختارة أو تنسيق توريد متكرر، وفق اتفاق يتم تحديده مع كل عميل.</p></div><a class="button button-gold" routerLink="/cart">اطلب عرض السعر الآن</a></div>
+    <p class="operational-note">تُحدد تفاصيل التوريد، بما في ذلك الكميات والأسعار ومواعيد التسليم، بعد مراجعة الطلب والتنسيق مع العميل.</p>
+  </section>
+
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-heading"><p class="eyebrow">إجابات سريعة</p><h2>الأسئلة الشائعة</h2></div>
+      <div class="faq-list">
+        <details><summary>هل ميني أسس مخصص للأفراد أم للمنشآت التجارية؟</summary><p>ميني أسس الحلوى مخصص لتوريد الحلويات والمخبوزات للكوفيهات والمنشآت التجارية.</p></details>
+        <details><summary>كيف يمكنني معرفة أسعار المنتجات؟</summary><p>اختر المنتجات والكميات المطلوبة وأرسل طلب عرض سعر، وسيراجع فريق التوريد طلبك ويتواصل معك بالتفاصيل.</p></details>
+        <details><summary>هل يمكن طلب عدة أصناف في عرض سعر واحد؟</summary><p>نعم، أضف عدة أصناف إلى قائمة طلب التسعير وأرسلها في طلب واحد.</p></details>
+        <details><summary>هل يمكن الاتفاق على توريد دوري؟</summary><p>يمكن مناقشة ترتيبات التوريد الدوري والكميات والمواعيد وفق احتياجات المنشأة والإمكانات المتاحة.</p></details>
+        <details><summary>هل تتوفر أحجام مختلفة؟</summary><p>تظهر خيارات الحجم المسجلة للمنتج في تفاصيله، ويمكن توضيح أي متطلبات أخرى في طلب عرض السعر.</p></details>
+        <details><summary>هل تشمل الأسعار الضريبة وتكاليف التوصيل؟</summary><p>تُوضح تفاصيل السعر والضريبة والتوصيل، إن وجدت، ضمن عرض السعر المقدم للمنشأة.</p></details>
+        <details><summary>كيف يتم تحديد مواعيد التوصيل？</summary><p>يتم الاتفاق على مواعيد التسليم ونطاق التغطية عند مراجعة طلب التوريد.</p></details>
+        <details><summary>هل التوريد مخصص للكوفيهات والمنشآت التجارية؟</summary><p>نعم الموقع مخصص لاستقبال طلبات توريد الحلويات والمخبوزات للكوفيهات والمنشآت التجارية.</p></details>
+        <details><summary>كيف أحصل على عرض سعر؟</summary><p>اختر المنتجات والكميات المطلوبة، ثم أرسل طلب عرض السعر. سيتواصل معك فريق التوريد لمراجعة التفاصيل.</p></details>
+        <details><summary>هل يمكن طلب عدة منتجات في عرض واحد؟</summary><p>نعم، يمكنك إضافة عدة أصناف وكميات مختلفة ضمن طلب عرض سعر موحد.</p></details>
+        <details><summary>هل يمكن الاتفاق على توريد دوري؟</summary><p>يمكن مناقشة ترتيبات التوريد الدوري مع فريق التوريد، وفق الأصناف والكميات والإمكانات المتاحة.</p></details>
+        <details><summary>هل تتوفر أحجام مختلفة؟</summary><p></p>تتوفر أحجام متعددة لبعض المنتجات، ويمكن الاطلاع عليها ضمن تفاصيل كل صنف.</details>
+        <details><summary>هل تشمل الأسعار التوصيل والضريبة؟</summary><p>يتم توضيح الأسعار والضريبة وتكاليف التوصيل، إن وجدت، في عرض السعر المقدم.</p></details>
+        <details><summary>كيف يتم تحديد مواعيد التسليم؟</summary><p>تحدد مواعيد التسليم بعد مراجعة الطلب والتأكد من توفر الأصناف والكميات المطلوبة.</p></details>
+        <details><summary>ما الحد الأدنى للطلب؟</summary><p>الحد الأدنى للطلب 500 ريال، وبحد أدنى 10 قطع من الصنف الواحد، مع إمكانية قبول كميات أقل حسب الحاجة وبالتنسيق المسبق.</p></details>
+        <details><summary>ما مدة صلاحية المنتجات وطريقة حفظها؟</summary><p>تختلف مدة الصلاحية وطريقة الحفظ حسب نوع المنتج، ويُوضح تاريخ انتهاء الصلاحية على كل منتج، مع ضرورة الالتزام بتعليمات الحفظ الخاصة به.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section container" id="contact">
+    <div><p class="eyebrow">قسم التوريد</p><h2>نسعد بأن نكون أحد شركاء نجاح الكوفي الخاص بك</h2><p>أرسل قائمة الأصناف والكميات المطلوبة، وسيتواصل فريق التوريد لمناقشة احتياج منشأتك وتفاصيل عرض السعر.</p></div>
+    <a class="button button-dark" routerLink="/cart">تواصل بطلب عرض سعر</a>
+  </section>
+</main>

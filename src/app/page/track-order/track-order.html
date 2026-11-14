@@ -1,0 +1,44 @@
+<main class="track-page" dir="rtl">
+  <header class="track-header">
+    <div class="track-container">
+      <a routerLink="/">الرئيسية</a><span>/</span><span>تتبع الطلب</span>
+      <h1>تتبع طلبك</h1>
+      <p>أدخل الرقم المرجعي ورقم الجوال المسجّل عند تقديم الطلب للاطلاع على تفاصيله.</p>
+    </div>
+  </header>
+
+  <div class="track-container track-content">
+    <section class="lookup-card" aria-labelledby="lookup-title">
+      <h2 id="lookup-title">بيانات التحقق</h2>
+      <form (ngSubmit)="trackOrder()" #trackingForm="ngForm" novalidate>
+        <label for="reference">الرقم المرجعي <span>*</span></label>
+        <input id="reference" name="reference" [(ngModel)]="reference" placeholder="مثال: MS-20261114-1234" autocomplete="off" required />
+        <label for="tracking-phone">رقم الجوال المسجّل للطلب <span>*</span></label>
+        <input id="tracking-phone" name="phone" [(ngModel)]="phone" type="tel" inputmode="tel" placeholder="05XXXXXXXX" autocomplete="tel" required />
+        <p class="privacy-hint">نطلب رقم الجوال للتحقق من ملكية الطلب وحماية بيانات العميل.</p>
+        <p *ngIf="errorMessage" class="track-error" role="alert">{{ errorMessage }}</p>
+        <button type="submit" class="track-submit" [disabled]="loading">{{ loading ? 'جارٍ البحث...' : 'عرض تفاصيل الطلب' }}</button>
+      </form>
+    </section>
+
+    <section *ngIf="order as result" class="order-details" aria-live="polite">
+      <div class="order-heading"><div><p class="eyebrow">طلب التوريد</p><h2>تفاصيل الطلب</h2></div><strong dir="ltr">{{ result.reference }}</strong></div>
+      <div class="order-state"><span class="state-dot"></span>تم استلام طلب عرض السعر، وبانتظار مراجعة فريق التوريد</div>
+      <dl class="customer-details">
+        <div><dt>اسم العميل</dt><dd>{{ result.contactName || '—' }}</dd></div>
+        <div><dt>اسم المنشأة</dt><dd>{{ result.businessName || '—' }}</dd></div>
+        <div><dt>مدينة التسليم والحي</dt><dd>{{ result.city || '—' }}</dd></div>
+        <div *ngIf="result.mapLink"><dt>موقع التسليم</dt><dd><a [href]="result.mapLink" target="_blank" rel="noopener noreferrer">فتح الموقع على خرائط Google</a></dd></div>
+        <div><dt>دورية التوريد</dt><dd>{{ frequencyLabel(result.supplyFrequency) }}</dd></div>
+        <div><dt>تاريخ استلام الطلب</dt><dd>{{ result.createdAt || '—' }}</dd></div>
+        <div *ngIf="result.notes"><dt>ملاحظات الطلب</dt><dd>{{ result.notes }}</dd></div>
+      </dl>
+      <h3>المنتجات والكميات المطلوبة</h3>
+      <div class="tracked-item" *ngFor="let item of result.items">
+        <div><strong>{{ item.name }}</strong><small *ngIf="item.sku">رمز المنتج: {{ item.sku }}</small><small *ngIf="item.categories?.length">{{ item.categories.join('، ') }}</small><small *ngIf="optionSummary(item.selectedOptions)">{{ optionSummary(item.selectedOptions) }}</small></div>
+        <b>{{ item.quantity }} قطعة</b>
+      </div>
+      <p class="tracking-note">الأسعار والتوفر ومواعيد التسليم يحددها فريق التوريد بعد مراجعة الطلب، وسيتواصل معك لمتابعته.</p>
+    </section>
+  </div>
+</main>

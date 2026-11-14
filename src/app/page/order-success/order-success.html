@@ -1,0 +1,25 @@
+<main class="success-page" dir="rtl">
+  <section class="success-card" aria-labelledby="success-title">
+    <div class="success-emblem" aria-hidden="true"><span>✓</span></div>
+    <p class="success-eyebrow">أسس الحلوى كافيه OSUS ALHALWA CAFÉ -</p>
+    <h1 id="success-title">تم استلام طلبك بنجاح.</h1>
+    <p class="success-lead">شكرًا لاختيارك أسس الحلوى كافيه. سيقوم فريق التوريد بمراجعة طلبك والتواصل معك لتقديم عرض السعر المناسب.</p>
+    <div class="reference-box" *ngIf="reference">
+      <span>الرقم المرجعي للطلب</span>
+      <strong dir="ltr">{{ reference }}</strong>
+      <button type="button" class="copy-reference" (click)="copyReference()">{{ copied ? 'تم النسخ' : 'نسخ الرقم المرجعي' }}</button>
+    </div>
+    <div class="next-steps">
+      <h2>الخطوات التالية.</h2>
+      <p><span>١</span>مراجعة المنتجات والكميات المطلوبة.</p>
+      <p><span>٢</span>التحقق من التوفر وإعداد عرض السعر.</p>
+      <p><span>٣</span>التواصل معك لتوضيح الأسعار ومواعيد التسليم.</p>
+      <p><span>٤</span>اعتماد طلب التوريد بعد موافقتك على العرض.</p>
+    </div>
+    <div class="success-actions">
+      <a routerLink="/" fragment="catalog" class="primary-action">تصفح المزيد من المنتجات</a>
+      <a *ngIf="whatsappUrl" [href]="whatsappUrl" target="_blank" rel="noopener noreferrer" class="secondary-action">التواصل عبر واتساب للاستفسار</a>
+    </div>
+    <p class="success-footnote">احتفظ بالرقم المرجعي لتسهيل متابعة طلبك والاستفسار عنه.</p>
+  </section>
+</main>
