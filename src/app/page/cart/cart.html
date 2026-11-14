@@ -16,14 +16,14 @@
     <section class="quote-form-card" aria-labelledby="form-title">
       <div class="card-heading"><div><p class="step-label">الخطوة 2</p><h2 id="form-title">بيانات المنشأة ومعلومات التواصل</h2></div></div>
       <form (ngSubmit)="submitQuote()" #quoteForm="ngForm" novalidate>
-        <label> اسم الكوفي أو المنشأة <span>*</span><input name="businessName" [(ngModel)]="businessName" required autocomplete="organization" /></label>
-        <label>اسم مسؤول الطلب <span>*</span><input name="contactName" [(ngModel)]="contactName" required autocomplete="name" /></label>
-        <label>رقم الجوال (واتساب) <span>*</span><input name="phone" [(ngModel)]="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="0500000000" required pattern="^(05\d{8}|\+?9665\d{8})$" /></label>
-        <label>مدينة التسليم والحي <span>*</span><input name="city" [(ngModel)]="city" autocomplete="address-level2" required /></label>
+        <label>* اسم الكوفي أو المنشأة<input name="businessName" [(ngModel)]="businessName" required autocomplete="organization" /></label>
+        <label>* اسم مسؤول الطلب<input name="contactName" [(ngModel)]="contactName" required autocomplete="name" /></label>
+        <label>* رقم الجوال (واتساب)<input name="phone" [(ngModel)]="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="0500000000" required pattern="^(05\d{8}|\+?9665\d{8})$" /></label>
+        <label>* مدينة التسليم والحي<input name="city" [(ngModel)]="city" autocomplete="address-level2" required /></label>
         <label>رابط الموقع عبر خرائط Google (اختياري)<input name="mapLink" [(ngModel)]="mapLink" type="url" placeholder="https://maps.google.com/..." /></label>
-        <label>دورية التوريد المطلوبة <span>*</span><select name="supplyFrequency" [(ngModel)]="supplyFrequency" required><option value="" disabled>اختر نوع التوريد</option><option value="once">طلب لمرة واحدة</option><option value="weekly">توريد أسبوعي</option><option value="daily">توريد يومي</option><option value="as-needed">توريد حسب الحاجة</option></select></label>
-        <label>ملاحظات ومتطلبات إضافية<textarea name="notes" [(ngModel)]="notes" rows="3"></textarea></label>
-        <label>كيف تعرفت على أسس الحلوى كافيه؟ <span>*</span><select name="referralSource" [(ngModel)]="referralSource" required><option value="" disabled>اختر مصدر التعرف</option><option value="sales-representative">عن طريق مندوب مبيعات</option><option value="social-media">وسائل التواصل الاجتماعي</option><option value="google">محركات البحث (Google)</option><option value="customer-recommendation">توصية من عميل آخر</option><option value="other">أخرى</option></select></label>
+        <label>* دورية التوريد المطلوبة<select name="supplyFrequency" [(ngModel)]="supplyFrequency" required><option value="" disabled>اختر نوع التوريد</option><option value="once">طلب لمرة واحدة</option><option value="weekly">توريد أسبوعي</option><option value="daily">توريد يومي</option><option value="as-needed">توريد حسب الحاجة</option></select></label>
+        <label>* ملاحظات إضافية<textarea name="notes" [(ngModel)]="notes" rows="3"></textarea></label>
+        <label>* كيف تعرفت على أسس الحلوى كافيه؟<select name="referralSource" [(ngModel)]="referralSource" required><option value="" disabled>اختر مصدر التعرف</option><option value="sales-representative">عن طريق مندوب مبيعات</option><option value="social-media">وسائل التواصل الاجتماعي</option><option value="google">محركات البحث (Google)</option><option value="customer-recommendation">توصية من عميل آخر</option><option value="other">أخرى</option></select></label>
         <label *ngIf="referralSource === 'sales-representative'">اسم مندوب المبيعات <span>*</span><input name="salesRepresentative" [(ngModel)]="salesRepresentative" required /></label>
         <label class="consent-field"><input type="checkbox" name="privacyConsent" [(ngModel)]="privacyConsent" required /><span>أوافق على استخدام بياناتي للتواصل معي بشأن طلب عرض السعر ومتابعة إجراءات التوريد، وفق <a href="https://osus-alhalwa.com/privacy-policy/" target="_blank" rel="noopener noreferrer">سياسة الخصوصية</a> المعتمدة.</span></label>
         <p class="privacy-note">لا يتطلب تقديم طلب عرض السعر أي دفع مسبق، وتُحدد الأسعار والكميات المتاحة ومواعيد التسليم بعد مراجعة الطلب.</p>

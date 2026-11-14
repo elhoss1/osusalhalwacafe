@@ -22,7 +22,7 @@
     </section>
 
     <section *ngIf="order as result" class="order-details" aria-live="polite">
-      <div class="order-heading"><div><p class="eyebrow">طلب التوريد</p><h2>تفاصيل الطلب</h2></div><strong dir="ltr">{{ result.reference }}</strong></div>
+      <div class="order-heading"><div><h2>تفاصيل الطلب</h2></div><strong dir="ltr">{{ result.reference }}</strong></div>
       <div class="order-state"><span class="state-dot"></span>تم استلام طلب عرض السعر، وبانتظار مراجعة فريق التوريد</div>
       <dl class="customer-details">
         <div><dt>اسم العميل</dt><dd>{{ result.contactName || '—' }}</dd></div>
@@ -36,7 +36,7 @@
       <h3>المنتجات والكميات المطلوبة</h3>
       <div class="tracked-item" *ngFor="let item of result.items">
         <div><strong>{{ item.name }}</strong><small *ngIf="item.sku">رمز المنتج: {{ item.sku }}</small><small *ngIf="item.categories?.length">{{ item.categories.join('، ') }}</small><small *ngIf="optionSummary(item.selectedOptions)">{{ optionSummary(item.selectedOptions) }}</small></div>
-        <b>{{ item.quantity }} قطعة</b>
+        <b>العدد = {{ item.quantity }}</b>
       </div>
       <p class="tracking-note">الأسعار والتوفر ومواعيد التسليم يحددها فريق التوريد بعد مراجعة الطلب، وسيتواصل معك لمتابعته.</p>
     </section>

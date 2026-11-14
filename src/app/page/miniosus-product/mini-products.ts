@@ -22,17 +22,17 @@ interface CatalogCategory {
 export class MiniOsusProduct implements OnInit {
   products: Product[] = [];
   loading = false;
-  selectedCategory: CatalogCategoryId = 'all';
+  selectedCategory: CatalogCategoryId = 'mini-cake';
 
   readonly categories: CatalogCategory[] = [
-    { id: 'all', label: 'جميع المنتجات', keywords: [] },
     { id: 'mini-cake', label: 'ميني كيك', keywords: ['ميني', 'mini cake', 'mini-cake'], categoryIds: [44] },
     { id: 'cake', label: 'الكيك وشرائح الكيك', keywords: ['كيك', 'cake', 'شرائح', 'pound cake'], categoryIds: [69] },
-    { id: 'cheesecake-tart', label: 'التشيز كيك والتارت', keywords: ['تشيز', 'cheese cake', 'cheesecake', 'تارت', 'tart'] },
+    // { id: 'cheesecake-tart', label: 'التشيز كيك والتارت', keywords: ['تشيز', 'cheese cake', 'cheesecake', 'تارت', 'tart'] },
     { id: 'croissant-bakery', label: 'الكرواسون والمخبوزات', keywords: ['كرواسون', 'croissant', 'دانش', 'danish', 'مخبوز', 'bakery', 'معجن'] },
     { id: 'cookies-brownies', label: 'الكوكيز والبراونيز', keywords: ['كوكيز', 'cookie', 'براونيز', 'brownie'] },
-    { id: 'chocolate-special', label: 'الشوكولاتة والحلويات الخاصة', keywords: ['شوكولات', 'chocolate', 'حلويات خاصة', 'special'] }
-  ];
+    { id: 'chocolate-special', label: 'الشوكولاتة والحلويات الخاصة', keywords: ['شوكولات', 'chocolate', 'حلويات خاصة', 'special'] },
+    { id: 'all', label: 'جميع المنتجات', keywords: [] },
+    ];
 
   private readonly MIN_LOADING_MS = 450;
   private requestId = 0;

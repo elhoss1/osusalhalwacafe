@@ -154,7 +154,7 @@ export class CartComponent implements OnInit {
     const date = new Date();
     const day = `${date.getFullYear()}${`${date.getMonth() + 1}`.padStart(2, '0')}${`${date.getDate()}`.padStart(2, '0')}`;
     const token = String(Math.floor(Math.random() * 10000)).padStart(4, '0');
-    return `MS-${day}-${token}`;
+    return `OS-${day}-${token}`;
   }
 
   private showStatus(message: string, type: 'success' | 'error' | 'info'): void {
